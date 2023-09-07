@@ -1,0 +1,9 @@
+{% if courses_list %}
+    <ul>
+    {% for course in courses_list %}
+        <li><a href="/course/{{ course.id }}/">{{ course.course_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
