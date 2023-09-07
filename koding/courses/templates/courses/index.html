@@ -1,9 +1,25 @@
-{% if courses_list %}
-    <ul>
-    {% for course in courses_list %}
-        <li><a href="/course/{{ course.id }}/">{{ course.course_name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <a href="/profile/{{ user.username }}">Profile</a>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/login">Login</a>
+        <a href="/signup">Sign up</a>
+    {% endif %}
+
+    {% if courses_list %}
+        <ul>
+        {% for course in courses_list %}
+            <li><a href="/course/{{ course.id }}/">{{ course.course_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
