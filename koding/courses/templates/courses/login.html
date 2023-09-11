@@ -1,18 +1,57 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}"></link>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.3.15/dist/vuetify.min.css"></link>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" />
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        {{ error_message }}
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-        <input type="submit" value="Login">
-    </form>
+    <div id="app">
+        <v-layout>
+            <v-app-bar>
+                <v-app-bar-nav-icon>
+                    <v-btn flat icon href="{% url 'index' %}">
+                        <v-icon>
+                            mdi-home
+                        </v-icon>
+                    </v-btn>
+                </v-app-bar-nav-icon>
+                <v-app-bar-title>
+                    Koding
+                </v-app-bar-title>
+                {% if user.is_authenticated %}
+                    <v-btn class="mlr-2" href="/profile/{{ user.username }}">Profile</v-btn>
+                    <v-btn class="mlr-2" href="/logout">Logout</v-btn>
+                {% else %}
+                    <v-btn class="mlr-2" href="/signup">Sign up</v-btn>
+                {% endif %}
+            </v-app-bar>
+            <v-main>
+                <div class="main">
+                    <div class="form">
+                        <v-card>
+                            <v-card-title class="text-h5">Login</v-card-title>
+                            <v-card-text>
+                                <form method="post" action="{% url 'login' %}">
+                                    {% csrf_token %}
+                                    {{ error_message }}
+                                    <label for="username">Username:</label>
+                                    <v-text-field type="text" id="username" name="username" required></v-text-field>
+                                    <label for="password">Password:</label>
+                                    <v-text-field type="password" id="password" name="password" required></v-text-field>
+                                    <v-btn type="submit" value="Login">Login</v-btn>
+                                </form>
+                            </v-card-text>
+                        </v-card>
+                    </div>
+                </div>
+            </v-main>
+        </v-layout>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.3.15/dist/vuetify.min.js"></script>
+    <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>

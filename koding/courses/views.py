@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import Http404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -50,8 +51,8 @@ def signup_view(request):
 
 def profile(request, username):
     try:
-    	user = User.objects.get(username=username)
-    	profile = Profile.objects.get(user=user)
+        user = User.objects.get(username=username)
+        profile = Profile.objects.get(user=user)
     except Course.DoesNotExist:
         raise Http404("User does not exist")
     return render(request, "courses/profile.html", {"profile": profile})
