@@ -13,6 +13,11 @@ def index(request):
     	}
     return render(request, "courses/index.html", context)
 
+def studio(request):
+    context = {
+        "user": request.user,
+    }
+    return render(request, "courses/studio.html", context)
 
 def course(request, course_id):
     try:

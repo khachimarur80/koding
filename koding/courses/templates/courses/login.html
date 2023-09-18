@@ -9,7 +9,8 @@
 </head>
 <body>
     <div id="app">
-        <v-layout>
+        <v-app theme="dark">
+            <v-layout>
             <v-app-bar>
                 <v-app-bar-nav-icon>
                     <v-btn flat icon href="{% url 'index' %}">
@@ -48,7 +49,8 @@
                     </div>
                 </div>
             </v-main>
-        </v-layout>
+            </v-layout>
+        </v-app>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@3.3.15/dist/vuetify.min.js"></script>

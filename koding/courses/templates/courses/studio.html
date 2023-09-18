@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"></link>
+    <title>Studio</title>
+    <link rel="stylesheet" href="{% static 'css/studio.css' %}"></link>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.3.15/dist/vuetify.min.css"></link>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" />
 </head>
@@ -23,7 +23,6 @@
                         Koding
                     </v-app-bar-title>
                     {% if user.is_authenticated %}
-                        <v-btn class="mlr-2" href="/studio">Studio</v-btn>
                         <v-btn class="mlr-2" href="/profile/{{ user.username }}">Profile</v-btn>
                         <v-btn class="mlr-2" href="/logout">Logout</v-btn>
                     {% else %}
@@ -33,21 +32,6 @@
                 </v-app-bar>
                 <v-main>
                     <div class="main"> 
-                        {% if courses_list %}
-                            {% for course in courses_list %}
-                                <v-card>
-                                    <v-card-title>
-                                        {{ course.course_name }}
-                                    </v-card-title>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                        <v-btn href="/course/{{ course.id }}/">Visit</v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                            {% endfor %}
-                        {% else %}
-                            <p id="no-courses-available">No courses are available</p>
-                        {% endif %}
                     </div>
                 </v-main>
             </v-layout>
@@ -55,6 +39,6 @@
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@3.3.15/dist/vuetify.min.js"></script>
-    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/studio.js' %}"></script>
 </body>
 </html>
