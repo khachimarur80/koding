@@ -7,9 +7,6 @@ const app = Vue.createApp({
 });
 
 const vuetify = Vuetify.createVuetify({
-    theme: {
-        defaultTheme: 'dark'
-    }
 });
 
 app.use(vuetify);

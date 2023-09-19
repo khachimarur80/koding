@@ -9,10 +9,20 @@ body, html {
 }
 .main {
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 100%;
     padding: 20px;
+    width: 100%;
+    flex-direction: column;
+}
+.courses {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 #no-courses-available {
     font-size: 28px;
