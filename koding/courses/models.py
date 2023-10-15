@@ -4,23 +4,45 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-
-class Course(models.Model):
-	course_name = models.TextField()
-	pub_date = models.DateTimeField("Date published.")
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	bio = models.TextField(max_length=500, blank=True)
+	location = models.CharField(max_length=30, blank=True)
+	birth_date = models.DateField(null=True, blank=True)
 
 	def __str__(self):
-		return self.course_name
+		return self.user.username
+
+class Course(models.Model):
+	title = models.CharField(max_length=120)
+	date = models.DateTimeField("Date published.")
+	introduction = models.TextField()
+
+	def __str__(self):
+		return self.title
+
+class Chapter(models.Model):
+	title = models.CharField(max_length=120)
+	content = models.TextField()
+	course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='chapters')
+
+	def __str__(self):
+		return self.title
+
+class Message(models.Model):
+	author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='messages')
+	course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='messages')
+	date = models.DateField("Date Published")
+	time = models.TimeField("Time Published")
+	contents = models.TextField()
+
+	def __str__(self):
+		return f"{self.author} in {self.course} on {self.date} at {self.time}"
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+	if created:
+		Profile.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+	instance.profile.save()

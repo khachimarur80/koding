@@ -26,12 +26,13 @@ SECRET_KEY = 'django-insecure-9-7e@#ig9^kzufco0v0!pl@%d)mu(d=y^5nym2b4^j)h#yn25^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     "courses.apps.CoursesConfig",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,6 +54,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'koding.urls'
 
+"""CHANNEL_LAYERS = {
+    'default': {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    },
+}"""
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -69,7 +76,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'koding.wsgi.application'
+
+#WSGI_APPLICATION = 'koding.wsgi.application'
+ASGI_APPLICATION = 'koding.asgi.application'
 
 
 # Database
@@ -125,3 +134,10 @@ STATICFILES_DIRS = ['static']
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
+

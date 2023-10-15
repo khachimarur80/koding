@@ -12,6 +12,7 @@ urlpatterns = [
     path("discussions/", views.discussion, name="discussion"),
     path("settings/", views.settings, name="settings"),
 
+    path('api/courses', views.course_list, name='courses-list'),
 
     path("login/", views.login_view, name="login"),
     path("signup/", views.signup_view, name="signup"),
