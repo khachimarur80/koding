@@ -2,16 +2,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Course</title>
+    <title>Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.3.15/dist/vuetify.min.css"></link>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="{% static 'src/vue/dist/css/course.css' %}"></link>
+    <link rel="stylesheet" href="{% static 'src/vue/dist/css/chapter.css' %}"></link>
     <link rel="stylesheet" href="{% static 'src/vue/dist/css/chunk-vendors.css' %}"></link>
+    <link rel="icon" href="{% static 'images/kodev.png' %}">
 </head>
 <body>
     <div id="app">
     </div>
+    {% csrf_token %}
     <script type="text/javascript" src="{% static 'src/vue/dist/js/chunk-vendors.js' %}"></script>
-    <script type="text/javascript" src="{% static 'src/vue/dist/js/course.js' %}"></script>
+    <script type="text/javascript" src="{% static 'src/vue/dist/js/chapter.js' %}"></script>
 </body>
 </html>

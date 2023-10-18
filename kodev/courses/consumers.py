@@ -3,6 +3,7 @@ from channels.db import database_sync_to_async
 from rest_framework.renderers import JSONRenderer
 from .models import Message, Course
 from .serializers import MessageSerializer
+import json
 
 class CourseMessagesConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -19,7 +20,22 @@ class CourseMessagesConsumer(AsyncWebsocketConsumer):
         return messages_data
 
     async def receive(self, text_data):
-        course_id = text_data
+        course_id = json.loads(text_data)['course_id']
         messages_data = await self.get_messages(course_id)
-        print(messages_data)
+
+        # Send the messages_data to the client that sent the message
+        await self.send(text_data=messages_data)
+
+        # Broadcast the same messages_data to all connected clients in a group
+        await self.channel_layer.group_add(f"course_{course_id}", self.channel_name)
+        await self.channel_layer.group_send(
+            f"course_{course_id}",
+            {
+                "type": "chat.message",
+                "message": messages_data,
+            }
+        )
+
+    async def chat_message(self, event):
+        messages_data = event["message"]
         await self.send(text_data=messages_data)
