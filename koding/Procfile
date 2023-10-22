@@ -1,1 +1,1 @@
-uvicorn koding.asgi:application
+web: uvicorn koding.asgi
