@@ -62,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-
+#WSGI_APPLICATION = "fuck"
 ASGI_APPLICATION = 'koding.asgi.application'
 
 DATABASES = {
