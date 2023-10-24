@@ -1,0 +1,1 @@
+body,html{height:100%;width:100%;padding:0;margin:0;overflow:hidden}::-webkit-scrollbar{width:0;height:0}#main{display:flex;gap:20px;padding:20px;margin-top:64px;margin-bottom:40px;height:calc(100vh - 200px);overflow:hidden;justify-content:center;align-items:center}
