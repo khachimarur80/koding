@@ -1,6 +1,10 @@
 # Koding
 
-Koding is a platform where anyone can view programming courses, and discuss about them with other people.
+Koding is a platform where anyone can view programming courses, and discuss about them with other people. It is currently deployed using Railway. You can see the features down below, or you can just go and check them yourself!
+
+![View Live](https://koding.up.railway.app)
+
+---
 
 ## Views
 
