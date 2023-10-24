@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "https://koding.up.railway.app", "koding.up.railway.app"]
 
-CSRF_TRUSTED_ORIGINS = ["127.0.0.1", "https://koding.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://koding.up.railway.app"]
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
