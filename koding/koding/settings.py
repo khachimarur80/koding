@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-9-7e@#ig9^kzufco0v0!pl@%d)mu(d=y^5nym2b4^j)h#yn25^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "koding.up.railway.app"]
+ALLOWED_HOSTS = ["127.0.0.1", "https://koding.up.railway.app"]
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
