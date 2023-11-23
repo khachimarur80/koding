@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  //publicPath: '/koding/courses/static/src/vue/dist/',
+  publicPath: '/home', //'/koding/courses/static/src/vue/dist/',
   //outputDir: path.resolve(__dirname, '../koding/courses/static/src/vue/dist/'), 
   pluginOptions: {
     vuetify: {
