@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: '/home', //'/koding/courses/static/src/vue/dist/',
+  //publicPath: '/koding/courses/static/src/vue/dist/',
   //outputDir: path.resolve(__dirname, '../koding/courses/static/src/vue/dist/'), 
   pluginOptions: {
     vuetify: {
@@ -11,6 +11,12 @@ module.exports = defineConfig({
 		}
   },
   pages: {
+    'index': {
+      entry: './src/pages/Home/main.js',
+      template: 'public/home.html',
+      title: 'Home',
+      chunks: ['chunk-vendors', 'chunk-common', 'home'],
+    },
     'home' : {
       entry: './src/pages/Home/main.js',
       template: 'public/home.html',
